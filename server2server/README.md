@@ -151,7 +151,3 @@ const resource = await response.json()
 
 Since there are no refresh token involved, the requests may fail, due to expired token.
 It's up to the client to re-request a new token.
-
-## License
-
-MIT, see [LICENSE](../LICENSE) file
