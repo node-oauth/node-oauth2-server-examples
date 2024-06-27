@@ -16,9 +16,9 @@ function createModel (db) {
     }
 
     if (typeof scope === 'string') {
-      return enabledScopes.includes(scope);
+      return enabledScopes.includes(scope) ? [scope] : false;
     } else {
-      return scope.every(s => enabledScopes.includes(s));
+      return scope.every(s => enabledScopes.includes(s)) ? scope : false;
     }
   }
 
