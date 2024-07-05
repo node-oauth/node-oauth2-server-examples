@@ -1,0 +1,24 @@
+{
+  "name": "express-memory",
+  "version": "1.0.0",
+  "description": "Simple example of using with express and memory db",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/node-oauth/node-oauth2-server-examples.git"
+  },
+  "author": "Jan Küster <info@jankuester.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/node-oauth/node-oauth2-server-examples/issues"
+  },
+  "homepage": "https://github.com/node-oauth/node-oauth2-server-examples#readme",
+  "dependencies": {
+    "@node-oauth/express-oauth-server": "^4.0.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
+}
