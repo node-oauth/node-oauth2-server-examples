@@ -16,6 +16,10 @@ function InMemoryCache() {
  */
 
 InMemoryCache.prototype.dump = function() {
+  this.users.length = 0;
+  this.clients.length = 0;
+  this.accessToken.clear();
+  this.refreshToken.clear();
   console.log('clients', this.clients);
   console.log('tokens', this.tokens);
   console.log('users', this.users);
@@ -26,11 +30,10 @@ InMemoryCache.prototype.dump = function() {
  */
 
 InMemoryCache.prototype.getAccessToken = function(bearerToken) {
-  let tokens = this.tokens.filter(function(token) {
-    return token.accessToken === bearerToken;
-  });
-
-  return tokens.length ? tokens[0] : false;
+  const entry = { ...this.accessToken.get(bearerToken) };
+  if (!entry) return null;
+  entry.user = this.users.find(u => u.id === entry.userId);
+  return entry
 };
 
 /**
@@ -38,11 +41,7 @@ InMemoryCache.prototype.getAccessToken = function(bearerToken) {
  */
 
 InMemoryCache.prototype.getRefreshToken = function(bearerToken) {
-  let tokens = this.tokens.filter(function(token) {
-    return token.refreshToken === bearerToken;
-  });
-
-  return tokens.length ? tokens[0] : false;
+  return this.refreshToken.get(bearerToken);
 };
 
 /**
@@ -51,9 +50,10 @@ InMemoryCache.prototype.getRefreshToken = function(bearerToken) {
 
 InMemoryCache.prototype.getClient = function(clientId, clientSecret) {
   let clients = this.clients.filter(function(client) {
-    return client.clientId === clientId && client.clientSecret === clientSecret;
+    return clientSecret !== null
+      ? client.clientId === clientId && client.clientSecret === clientSecret
+      : client.clientId === clientId;
   });
-
   return clients.length ? clients[0] : false;
 };
 
@@ -85,14 +85,6 @@ InMemoryCache.prototype.saveToken = function(token, client, user) {
   }
 
   return token;
-};
-
-InMemoryCache.prototype.saveAuthorizationCode = function (code, client, user) {
-  this.authCodes.push({ code, client, user });
-};
-
-InMemoryCache.prototype.getAuthorizationCode = function (authorizationCode) {
-  return this.authCodes.find(doc => doc.code.authorization_code === authorizationCode);
 };
 
 /*
