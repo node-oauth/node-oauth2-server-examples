@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/token', app.oauth.token());
 
-app.use('/secret', app.oauth.authorize(), function(req, res) {
+app.use('/secret', app.oauth.authenticate(), function(req, res) {
   console.debug('secret')
   res.send('Secret area');
 });
