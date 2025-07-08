@@ -1,0 +1,134 @@
+:root {
+  /* Color Variables */
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+  --white: #ffffff;
+
+  /* Background Colors */
+  --light-bg: #f8f9fa;
+  --success-bg: #d4edda;
+  --danger-bg: #f5c6cb;
+
+  /* Border Colors */
+  --light-border: #dee2e6;
+  --success-border: #c3e6cb;
+  --danger-border: #f5c6cb;
+  --input-border: #ddd;
+
+  /* Spacing */
+  --border-radius: 4px;
+  --padding: 10px;
+  --margin: 10px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: var(--padding);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.button {
+  display: inline-block;
+  padding: var(--padding);
+  margin: var(--margin);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  border: none;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.primary {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.secondary {
+  background: var(--secondary-color);
+  color: var(--white);
+}
+
+.danger {
+  background: var(--danger-color);
+  color: var(--white);
+  border: 1px solid var(--danger-border);
+}
+
+.alert {
+  padding: var(--padding);
+  margin: var(--margin) 0;
+  border-radius: var(--border-radius);
+}
+
+.success {
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+}
+
+.info {
+  background: var(--light-bg);
+  padding: var(--padding);
+  border: 1px solid var(--light-border);
+  margin-bottom: var(--margin);
+}
+
+.result {
+  background: var(--light-bg);
+  padding: var(--padding);
+  border: 1px solid var(--light-border);
+  border-radius: var(--border-radius);
+  margin: var(--margin) 0;
+}
+
+.form-group {
+  margin-bottom: var(--margin);
+}
+
+label {
+  display: block;
+  margin-bottom: var(--margin);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: var(--padding);
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius);
+}
+
+.code {
+  background: var(--light-bg);
+  padding: var(--padding);
+  border: 1px solid var(--light-border);
+  font-family: monospace;
+  border-radius: var(--border-radius);
+}
+
+pre {
+  background: var(--light-bg);
+  padding: var(--padding);
+  border: 1px solid var(--light-border);
+  border-radius: var(--border-radius);
+  overflow-x: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.status {
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  margin: var(--margin) 0;
+}

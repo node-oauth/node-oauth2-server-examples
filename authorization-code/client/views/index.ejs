@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OAuth2 Client</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <h1>OAuth2 Authorization Code Client</h1>
+
+    <div id="authenticatedSection" style="display: none">
+      <div class="alert success">
+        <strong>Status:</strong> Authenticated ✓<br />
+        <strong>Access Token:</strong> <span id="tokenDisplay">Loading...</span>
+      </div>
+
+      <h3>Resource Operations:</h3>
+      <p>Test your OAuth2 access token by calling the protected resource:</p>
+
+      <a href="#" class="button danger" onclick="logout()">Logout</a>
+    </div>
+
+    <div id="notAuthenticatedSection">
+      <div class="alert info"><strong>Status:</strong> Not Authenticated</div>
+
+      <div class="alert info">
+        <h4>You are not logged in</h4>
+        <p>
+          Click the login button to start the OAuth2 authorization code flow.
+        </p>
+        <a href="/login" class="button primary">Login with OAuth2</a>
+      </div>
+    </div>
+
+    <div class="alert info">
+      <h4>Resource Tests:</h4>
+      <p>Test both public and private resources:</p>
+      <button class="button primary" onclick="accessPrivateResource()">
+        Access Private Resource
+      </button>
+      <button class="button secondary" onclick="testPublic()">
+        Test Public Resource
+      </button>
+    </div>
+
+    <!-- Result containers -->
+    <div id="successResult" class="alert info" style="display: none">
+      <h4 id="successTitle">Result</h4>
+      <pre id="successData"></pre>
+    </div>
+
+    <div id="errorResult" class="alert info" style="display: none">
+      <h4 id="errorTitle">Error</h4>
+      <pre id="errorData"></pre>
+    </div>
+
+    <script>
+      const authServer = "<%= authServer %>";
+      let accessToken = localStorage.getItem("access_token");
+
+      const toggleSections = (isAuthenticated) => {
+        document.getElementById("authenticatedSection").style.display =
+          isAuthenticated ? "block" : "none";
+
+        document.getElementById("notAuthenticatedSection").style.display =
+          isAuthenticated ? "none" : "block";
+
+        if (isAuthenticated) {
+          document.getElementById("tokenDisplay").textContent =
+            accessToken.substring(0, 20) + "...";
+        }
+      };
+
+      toggleSections(!!accessToken);
+
+      const showResult = (data, isError = false) => {
+        const successEl = document.getElementById("successResult");
+        const errorEl = document.getElementById("errorResult");
+
+        successEl.style.display = "none";
+        errorEl.style.display = "none";
+        const textContent = JSON.stringify(data, null, 2);
+
+        if (isError) {
+          document.getElementById("errorData").textContent = textContent;
+          errorEl.style.display = "block";
+        } else {
+          document.getElementById("successData").textContent = textContent;
+          successEl.style.display = "block";
+        }
+      };
+
+      const callAPI = async (endpoint, requiresAuth = false) => {
+        try {
+          const headers = {};
+          if (requiresAuth && accessToken) {
+            headers.Authorization = `Bearer ${accessToken}`;
+          }
+
+          const response = await fetch(`${authServer}${endpoint}`, { headers });
+          if (response.status === 401) {
+            showResult(
+              { error: "Unauthorized: Please login to access this resource" },
+              true
+            );
+          } else {
+            const data = await response.json();
+            showResult(data, !response.ok);
+          }
+        } catch (error) {
+          showResult({ error: error.message }, true);
+        }
+      };
+
+      const accessPrivateResource = () => callAPI("/protected", true);
+      const testPublic = () => callAPI("/public", false);
+
+      const logout = () => {
+        localStorage.removeItem("access_token");
+        window.location.reload();
+      };
+    </script>
+  </body>
+</html>
