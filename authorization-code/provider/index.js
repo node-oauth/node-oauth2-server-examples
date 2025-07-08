@@ -1,5 +1,6 @@
 require("dotenv").config({ path: "../.env" });
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const express = require("express");
 const OAuthServer = require("@node-oauth/express-oauth-server");
 const createModel = require("./model");
@@ -30,19 +31,7 @@ db.saveUser({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  if (req.method === "OPTIONS") {
-    res.sendStatus(200);
-  } else {
-    next();
-  }
-});
+app.use(cors());
 
 app.get("/oauth/authorize", function (req, res) {
   res.render("authorize", {
