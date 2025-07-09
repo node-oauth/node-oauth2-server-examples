@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config();
 const express = require("express");
 const crypto = require("crypto");
 
@@ -9,6 +9,7 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
 
+console.log(process.env.AUTH_SERVER);
 const authServer = process.env.AUTH_SERVER;
 const clientId = process.env.CLIENT_ID;
 const clientSecret = process.env.CLIENT_SECRET;
