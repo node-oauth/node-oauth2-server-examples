@@ -16,16 +16,16 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 
 db.saveClient({
-  id: process.env.CLIENT_ID || "testclient",
-  secret: process.env.CLIENT_SECRET || "testsecret",
+  id: process.env.CLIENT_ID,
+  secret: process.env.CLIENT_SECRET,
   grants: ["authorization_code", "refresh_token"],
-  redirectUris: [process.env.REDIRECT_URI || "http://localhost:3000/callback"],
+  redirectUris: [process.env.REDIRECT_URI],
 });
 
 db.saveUser({
-  id: process.env.USER_ID || "user1",
-  username: process.env.USERNAME || "demo",
-  password: process.env.PASSWORD || "demo",
+  id: process.env.USER_ID,
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
 });
 
 app.use(bodyParser.json());
