@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
 
-const authServer = "http://localhost:8080";
+const authServer = process.env.AUTH_SERVER || "http://localhost:8080";
 const clientId = process.env.CLIENT_ID || "testclient";
 const clientSecret = process.env.CLIENT_SECRET || "testsecret";
 const redirectUri =

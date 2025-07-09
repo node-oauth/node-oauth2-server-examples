@@ -53,7 +53,7 @@ $ cd provider && npm install
 $ cd ../client && npm install
 ```
 
-Create a `.env` file in the authorization-code directory:
+Create a `.env` file in the authorization-code/provider directory:
 
 ```
 CLIENT_ID=testclient
@@ -62,6 +62,15 @@ REDIRECT_URI=http://localhost:3000/callback
 USER_ID=user1
 USERNAME=demo
 PASSWORD=demo
+```
+
+Create a `.env` file in the authorization-code/client directory:
+
+```
+AUTH_SERVER=http://localhost:8080
+CLIENT_ID=testclient
+CLIENT_SECRET=testsecret
+REDIRECT_URI=http://localhost:3000/callback
 ```
 
 Start the provider (authorization server + resource server):
