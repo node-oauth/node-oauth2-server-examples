@@ -1,7 +1,6 @@
 :root {
   /* Color Variables */
-  --primary-color: #000000;
-  --secondary-color: #808080;
+  --accent-color: #242424;
   --danger-color: #dc3545;
   --success-color: #28a745;
   --white: #ffffff;
@@ -9,7 +8,6 @@
   /* Background Colors */
   --light-bg: #f8f9fa;
   --success-bg: #d4edda;
-  --danger-bg: #f5c6cb;
 
   /* Border Colors */
   --light-border: #dee2e6;
@@ -19,7 +17,7 @@
 
   /* Spacing */
   --border-radius: 4px;
-  --padding: 10px;
+  --padding: 12px;
   --margin: 10px;
 }
 
@@ -34,10 +32,18 @@ body {
   box-sizing: border-box;
 }
 
+p {
+  margin: 0 0 var(--margin);
+}
+
+h4 {
+  margin: 0 0 var(--margin);
+  font-size: 18px;
+}
+
 .button {
   display: inline-block;
   padding: var(--padding);
-  margin: var(--margin);
   text-decoration: none;
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -49,12 +55,7 @@ body {
 }
 
 .primary {
-  background: var(--primary-color);
-  color: var(--white);
-}
-
-.secondary {
-  background: var(--secondary-color);
+  background: var(--accent-color);
   color: var(--white);
 }
 
@@ -65,7 +66,7 @@ body {
 }
 
 .alert {
-  padding: var(--padding);
+  padding: calc(var(--padding) * 1.25);
   margin: var(--margin) 0;
   border-radius: var(--border-radius);
 }

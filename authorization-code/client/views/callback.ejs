@@ -5,19 +5,14 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <div id="loading" class="loading text-center">
-      <h2>Processing Authorization...</h2>
-      <p>Exchanging authorization code for access token...</p>
-    </div>
-
     <div id="success" style="display: none">
       <div class="alert success">
-        <h2>Authentication Successful! ✓</h2>
+        <h4>Authentication Successful! ✓</h4>
         <p>You have successfully obtained an access token.</p>
       </div>
 
-      <h3>Access Token</h3>
-      <div class="code" id="accessTokenDisplay"></div>
+      <h4>Access Token</h4>
+      <div class="alert code" id="accessTokenDisplay"></div>
       <p>You can now access protected resources using your access token.</p>
 
       <a href="/" class="button primary">Go to Homepage</a>
@@ -25,7 +20,7 @@
 
     <div id="error" style="display: none">
       <div class="alert danger">
-        <h2>Error</h2>
+        <h4>Error</h4>
         <p id="errorMessage"></p>
       </div>
 
@@ -72,14 +67,12 @@
       }
 
       function showSuccess(accessToken) {
-        document.getElementById("loading").style.display = "none";
         document.getElementById("accessTokenDisplay").textContent =
           accessToken.substring(0, 20) + "...";
         document.getElementById("success").style.display = "block";
       }
 
       function showError(message) {
-        document.getElementById("loading").style.display = "none";
         document.getElementById("errorMessage").textContent = message;
         document.getElementById("error").style.display = "block";
       }
