@@ -1,0 +1,14 @@
+{
+  "name": "oauth2-authorization-code-client",
+  "version": "1.0.0",
+  "description": "OAuth2 Authorization Code Grant Client Example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Authorization Required</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="auth-container">
+    <h4>Authorization Request</h4>
+
+    <div class="info alert">
+      <p><strong>Client:</strong> <%= client.id %></p>
+      <p><strong>Scope:</strong> <%= scope %></p>
+      <p>This application is requesting access to your account.</p>
+    </div>
+
+    <form method="post" action="<%= authServer %>/oauth/authorize">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="demo"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="demo"
+          required
+        />
+      </div>
+
+      <input type="hidden" name="client_id" value="<%= client.id %>" />
+      <input type="hidden" name="redirect_uri" value="<%= redirectUri %>" />
+      <input type="hidden" name="response_type" value="code" />
+      <input type="hidden" name="scope" value="<%= scope %>" />
+      <input type="hidden" name="state" value="<%= state %>" />
+
+      <button type="submit" name="allow" value="true" class="button primary">
+        Allow Access
+      </button>
+      <button type="submit" name="allow" value="false" class="button danger">
+        Deny Access
+      </button>
+    </form>
+  </body>
+</html>
