@@ -1,5 +1,10 @@
 # Authorization Code Grant Example
 
+> [!CAUTION]
+> Do not use this example in production 1:1. It is meant for educational purposes and
+> needs to be adapted to your specific use case. It is a minimal example that does not
+> include all necessary security measures.
+
 ## Architecture
 
 The authorization code workflow is described in
@@ -38,6 +43,7 @@ The authorization code workflow is described in
 - @node-oauth/express-oauth-server (uses @node-oauth/oauth2-server)
 - express
 - body-parser
+- cors
 
 ### Client dependencies
 
@@ -46,14 +52,14 @@ The authorization code workflow is described in
 
 ## Installation and usage
 
-Install dependencies in both provider and client directories:
+1. Install dependencies in both provider and client directories:
 
 ```shell
 $ cd provider && npm install
 $ cd ../client && npm install
 ```
 
-Create a `.env` file in the authorization-code/provider directory:
+2. Create a `.env` file in the authorization-code/provider directory:
 
 ```
 CLIENT_ID=testclient
@@ -64,7 +70,7 @@ USERNAME=demo
 PASSWORD=demo
 ```
 
-Create a `.env` file in the authorization-code/client directory:
+3. Create a `.env` file in the authorization-code/client directory:
 
 ```
 AUTH_SERVER=http://localhost:8080
@@ -73,28 +79,30 @@ CLIENT_SECRET=testsecret
 REDIRECT_URI=http://localhost:3000/callback
 ```
 
-Start the provider (authorization server + resource server):
+4. Start the provider (authorization server + resource server):
 
 ```shell
 $ cd provider && npm start
 ```
 
-Start the client application:
+5. Start the client application:
 
 ```shell
 $ cd client && npm start
 ```
 
-Visit http://localhost:3000 to start the authorization code flow.
+6. Visit http://localhost:3000 to start the authorization code flow.
 
 ## About This Example
 
-This example demonstrates a clear separation between the OAuth2 provider (authorization server + resource server) and the client application. Unlike other examples that might combine both roles in a single application, this example shows:
+This example demonstrates a clear separation between the OAuth2 provider (authorization server + resource server) 
+and the client application. 
+Unlike other examples that might combine both roles in a single application, this example shows:
 
 - **Provider** (port 8080): Acts as both authorization server and resource server
 - **Client** (port 3000): A separate web application that consumes OAuth2 services
 
-This separation makes it easier to understand what the framework supports and what it doesn't.
+This separation makes it easier to understand what the `@node-oauth/oauth2-server` library supports and what it doesn't.
 
 ## Flow
 

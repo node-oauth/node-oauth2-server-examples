@@ -7,6 +7,12 @@ with different setups.
 
 Each example contains its own README with specific installation and run instructions. 
 
+### Authorization Code Flow
+
+Location: [/authorization-code](./authorization-code)
+
+Minimal authorization code flow with express and fetch and in-memory DB.
+
 ### Server to server
 
 Location: [/server2server](./server2server)
