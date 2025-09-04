@@ -66,8 +66,8 @@ CLIENT_ID=testclient
 CLIENT_SECRET=testsecret
 REDIRECT_URI=http://localhost:3000/callback
 USER_ID=user1
-USERNAME=demo
-PASSWORD=demo
+OAUTH_USERNAME=demo
+OAUTH_PASSWORD=demo
 ```
 
 3. Create a `.env` file in the authorization-code/client directory:

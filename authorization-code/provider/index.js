@@ -24,8 +24,8 @@ db.saveClient({
 
 db.saveUser({
   id: process.env.USER_ID,
-  username: process.env.USERNAME,
-  password: process.env.PASSWORD,
+  username: process.env.OAUTH_USERNAME,
+  password: process.env.OAUTH_PASSWORD,
 });
 
 app.use(bodyParser.json());
