@@ -83,7 +83,7 @@ The overall output should look like so:
 [Consumer]: get /read-resource (not authenticated)
 [Provider]: 401 Unauthorized  
 
-[Consumer]: post /token (bad credentials)
+[Consumer]: post /token (invalid credentials)
 [Provider]: 401 Unauthorized {"error":"invalid_client","error_description":"Invalid client: client is invalid"} 
 
 [Consumer]: post /token (valid credentials)
