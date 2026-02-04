@@ -55,8 +55,8 @@ The authorization code workflow is described in
 1. Install dependencies in both provider and client directories:
 
 ```shell
-$ cd provider && npm install
-$ cd ../client && npm install
+cd provider && npm install
+cd ../client && npm install
 ```
 
 2. Create a `.env` file in the authorization-code/provider directory:
@@ -82,13 +82,13 @@ REDIRECT_URI=http://localhost:3000/callback
 4. Start the provider (authorization server + resource server):
 
 ```shell
-$ cd provider && npm start
+cd provider && npm start
 ```
 
 5. Start the client application:
 
 ```shell
-$ cd client && npm start
+cd client && npm start
 ```
 
 6. Visit http://localhost:3000 to start the authorization code flow.

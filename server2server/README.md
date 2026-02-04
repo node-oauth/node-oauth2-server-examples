@@ -47,8 +47,8 @@ Therefore, the setup looks something like this:
 If you haven't already cloned this repository, then clone it via
 
 ```shell
-$ git clone https://github.com/node-oauth/node-oauth2-server-examples.git
-$ cd server2server
+git clone https://github.com/node-oauth/node-oauth2-server-examples.git
+cd server2server
 ```
 
 ### Install and run the provider
@@ -57,9 +57,9 @@ Since we have two servers you need to install dependencies in both.
 First, start with the provider:
 
 ```shell
-$ cd provider
-$ npm install
-$ npm run start
+cd provider
+npm install
+npm run start
 ```
 
 The provider runs on `http://localhost:8080`
@@ -68,9 +68,9 @@ The provider runs on `http://localhost:8080`
 ### Install and run the consumer
 
 ```shell
-$ cd ../consumer
-$ npm install
-$ npm run start
+cd ../consumer
+npm install
+npm run start
 ```
 
 The consumer will now make several requests. Note, that some of them are expected to fail.
