@@ -24,7 +24,7 @@ node index.js
 2. Open a new terminal and get a token from the `/token` endpoint
 
 ```shell
-$ curl -d "grant_type=password&username=jdoe&password=foobarbaz"  -u "doeclient:foobarbaz" "http://localhost:3000/token"
+curl -d "grant_type=password&username=jdoe&password=foobarbaz"  -u "doeclient:foobarbaz" "http://localhost:3000/token"
 ```
 
 It should return a json response, something like this
@@ -41,7 +41,7 @@ It should return a json response, something like this
 3. access the `/secret` route with the token
 
 ```shell
-$ curl -i -H "Authorization: Bearer abe2eb52cf61d62b28ac503befc1b49405858f265aee0daf0e0f51faf656b03d" http://localhost:3000/secret
+curl -i -H "Authorization: Bearer abe2eb52cf61d62b28ac503befc1b49405858f265aee0daf0e0f51faf656b03d" http://localhost:3000/secret
 ```
 
 It should return a response like this
