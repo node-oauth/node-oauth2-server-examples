@@ -86,7 +86,7 @@ The overall output should look like so:
 [Consumer]: post /token (bad credentials)
 [Consumer]: => response: 401 Unauthorized {"error":"invalid_client","error_description":"Invalid client: client is invalid"} 
 
-[Consumer]: post /token (bad credentials)
+[Consumer]: post /token (valid credentials)
 [Consumer]: => response: 200 OK {"access_token":"45f81685482d6e1337b99ddb8726b7c04355b3d427b1401cf08e5c3bea013a38","token_type":"Bearer","expires_in":3600,"scope":true} 
 
 [Consumer]: authorization token successfully retrieved! 
