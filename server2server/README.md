@@ -78,30 +78,30 @@ The overall output should look like so:
 
 ```shell
 [Consumer]: get /public (public)
-[Consumer]: => response: 200 OK moo 
+[Provider]: 200 OK moo 
 
 [Consumer]: get /read-resource (not authenticated)
-[Consumer]: => response: 401 Unauthorized  
+[Provider]: 401 Unauthorized  
 
 [Consumer]: post /token (bad credentials)
-[Consumer]: => response: 401 Unauthorized {"error":"invalid_client","error_description":"Invalid client: client is invalid"} 
+[Provider]: 401 Unauthorized {"error":"invalid_client","error_description":"Invalid client: client is invalid"} 
 
 [Consumer]: post /token (valid credentials)
-[Consumer]: => response: 200 OK {"access_token":"45f81685482d6e1337b99ddb8726b7c04355b3d427b1401cf08e5c3bea013a38","token_type":"Bearer","expires_in":3600,"scope":true} 
+[Provider]: 200 OK {"access_token":"2e16cec83a2525355dfbebed69d28ac2e6265f0e787d8daf2c7114351e6477fa","token_type":"Bearer","expires_in":3600,"scope":"read"} 
 
-[Consumer]: authorization token successfully retrieved! 
+authorization token successfully retrieved! 
 
 [Consumer]: get /read-resource (authenticated, resource is not yet defined)
-[Consumer]: => response: 200 OK {"resource":null} 
+[Provider]: 200 OK {"resource":"foo-bar-moo"} 
 
 [Consumer]: post /write-resource (authentication failed)
-[Consumer]: => response: 401 Unauthorized {"error":"invalid_token","error_description":"Invalid token: access token is invalid"} 
+[Provider]: 401 Unauthorized {"error":"invalid_token","error_description":"Invalid token: access token is invalid"} 
 
 [Consumer]: post /write-resource (Invalid token)
-[Consumer]: => response: 200 OK {"message":"resource created"} 
+[Provider]: 200 OK {"message":"resource created"} 
 
 [Consumer]: get /read-resource (authenticated, resource is now)
-[Consumer]: => response: 200 OK {"resource":"foo-bar-moo"} 
+[Provider]: 200 OK {"resource":"foo-bar-moo"} 
 ```
 
 ## How routes are protected
