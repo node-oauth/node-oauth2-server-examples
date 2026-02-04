@@ -1,15 +1,15 @@
 import fetch from 'node-fetch';
 
 const rootUrl = 'http://localhost:8080';
-const log = (...args) => console.log('[Consumer]:', ...args);
+const log = (...args) => console.log(...args);
 const getBody = async response => {
   const body = await response.text();
-  log('=> response:', response.status, response.statusText, body, '\n');
+  log('[Provider]:', response.status, response.statusText, body, '\n');
   return body;
 };
 
 const request = async ({ url, method = 'get', body, headers, note = '' }) => {
-  log(method, url, note && `(${note})`);
+  log('[Consumer]:', method, url, note && `(${note})`);
   const fullUrl = `${rootUrl}${url}`;
   const options = { method, body, headers };
   const response = await fetch(fullUrl, options);
